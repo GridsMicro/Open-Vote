@@ -40,7 +40,7 @@
 
 1. **Clone Repository**
   ```bash
-  git clone [https://github.com/GridsMicro/Open-Vote.git](https://github.com/GridsMicro/Open-Vote.git)
+  git clone https://github.com/GridsMicro/Open-Vote.git
   cd Open-Vote
   
   ```
