@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Medal, Shield, Award, ExternalLink, Users, Loader2 } from 'lucide-react';
+import { useAppConfig } from './ConfigProvider';
 
 interface Partner {
     id: string;
@@ -16,13 +17,14 @@ interface Partner {
 }
 
 export default function NodeLeaderboard() {
+    const { AGGREGATOR_URL } = useAppConfig();
     const [leaders, setLeaders] = useState<Partner[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchPartners = async () => {
             try {
-                const res = await fetch('http://localhost:3001/partners');
+                const res = await fetch(`${AGGREGATOR_URL}/partners`);
                 const data = await res.json();
                 // Assign operational ranks
                 const ranked = data.map((p: any, idx: number) => ({
@@ -44,7 +46,7 @@ export default function NodeLeaderboard() {
         if (!name || !type) return;
 
         try {
-            const res = await fetch('http://localhost:3001/partners/register', {
+            const res = await fetch(`${AGGREGATOR_URL}/partners/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, type })

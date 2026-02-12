@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Database, CheckCircle2, Clock, Zap } from 'lucide-react';
+import { useAppConfig } from './ConfigProvider';
 
 interface MempoolVote {
     id: string;
@@ -26,6 +27,7 @@ interface MempoolStatus {
 }
 
 export default function MempoolVisualization() {
+    const { AGGREGATOR_URL } = useAppConfig();
     const [mempoolStatus, setMempoolStatus] = useState<MempoolStatus | null>(null);
     const [recentVotes, setRecentVotes] = useState<MempoolVote[]>([]);
 
@@ -42,8 +44,8 @@ export default function MempoolVisualization() {
     const fetchMempoolData = async () => {
         try {
             const [statusRes, streamRes] = await Promise.all([
-                fetch('http://localhost:3001/mempool/status'),
-                fetch('http://localhost:3001/mempool/stream?limit=20')
+                fetch(`${AGGREGATOR_URL}/mempool/status`),
+                fetch(`${AGGREGATOR_URL}/mempool/stream?limit=20`)
             ]);
 
             if (statusRes.ok && streamRes.ok) {
@@ -174,8 +176,8 @@ export default function MempoolVisualization() {
                                 className="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 border border-white/5"
                             >
                                 <div className={`w-2 h-2 rounded-full ${vote.status === 'confirmed' ? 'bg-emerald-400' :
-                                        vote.status === 'batched' ? 'bg-blue-400' :
-                                            'bg-yellow-400'
+                                    vote.status === 'batched' ? 'bg-blue-400' :
+                                        'bg-yellow-400'
                                     } animate-pulse`} />
                                 <div className="flex-1">
                                     <p className="text-sm text-white font-mono">{vote.id}</p>
@@ -183,8 +185,8 @@ export default function MempoolVisualization() {
                                 </div>
                                 <div className="text-right">
                                     <span className={`text-xs px-2 py-1 rounded-full ${vote.status === 'confirmed' ? 'bg-emerald-500/20 text-emerald-400' :
-                                            vote.status === 'batched' ? 'bg-blue-500/20 text-blue-400' :
-                                                'bg-yellow-500/20 text-yellow-400'
+                                        vote.status === 'batched' ? 'bg-blue-500/20 text-blue-400' :
+                                            'bg-yellow-500/20 text-yellow-400'
                                         }`}>
                                         {vote.status}
                                     </span>

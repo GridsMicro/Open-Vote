@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, MapPin, Users, CheckCircle, Clock, ChevronDown, ChevronUp, Activity } from 'lucide-react';
+import { useAppConfig } from './ConfigProvider';
 
 interface PollingStation {
     id: string;
@@ -21,6 +22,7 @@ interface PollingStation {
 }
 
 export default function LiveResults() {
+    const { AGGREGATOR_URL } = useAppConfig();
     const [viewLevel, setViewLevel] = useState<'zone' | 'province' | 'district' | 'station'>('zone');
     const [selectedZone, setSelectedZone] = useState<string>('');
     const [selectedProvince, setSelectedProvince] = useState<string>('');
@@ -64,7 +66,7 @@ export default function LiveResults() {
 
     const fetchLiveResults = async () => {
         try {
-            const res = await fetch('http://localhost:3001/results/live');
+            const res = await fetch(`${AGGREGATOR_URL}/results/live`);
             if (!res.ok) {
                 console.error('Failed to fetch live results');
                 return;
