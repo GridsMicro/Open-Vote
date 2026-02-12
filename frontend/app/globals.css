@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-inter: var(--font-inter);
+  --font-outfit: var(--font-outfit);
+  --font-prompt: var(--font-prompt);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-prompt), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  * {
+    @apply border-white/5;
+  }
+}

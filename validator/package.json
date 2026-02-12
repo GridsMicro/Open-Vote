@@ -1,0 +1,25 @@
+{
+    "name": "validator-node",
+    "version": "1.0.0",
+    "description": "Open-Vote Independent Validator Node",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node dist/index.js",
+        "dev": "ts-node-dev --respawn src/index.ts",
+        "build": "tsc"
+    },
+    "dependencies": {
+        "axios": "^1.6.0",
+        "dotenv": "^17.2.4",
+        "ethers": "^6.16.0",
+        "keccak256": "^1.0.6",
+        "merkletreejs": "^0.6.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.19.33",
+        "ts-node": "^10.9.2",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.4.5"
+    }
+}

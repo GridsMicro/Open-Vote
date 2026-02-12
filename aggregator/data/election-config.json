@@ -1,0 +1,95 @@
+{
+    "electionId": "2027-general-election",
+    "electionName": "การเลือกตั้งทั่วไป พ.ศ. 2570",
+    "electionDate": "2027-05-07",
+    "parties": [
+        {
+            "id": "party-001",
+            "name": "พรรคก้าวไกล",
+            "shortName": "ก้าวไกล",
+            "color": "#FF6B35",
+            "logo": "https://example.com/logos/party-001.png"
+        },
+        {
+            "id": "party-002",
+            "name": "พรรคเพื่อไทย",
+            "shortName": "เพื่อไทย",
+            "color": "#E63946",
+            "logo": "https://example.com/logos/party-002.png"
+        },
+        {
+            "id": "party-003",
+            "name": "พรรคประชาธิปัตย์",
+            "shortName": "ประชาธิปัตย์",
+            "color": "#457B9D",
+            "logo": "https://example.com/logos/party-003.png"
+        },
+        {
+            "id": "party-004",
+            "name": "พรรคภูมิใจไทย",
+            "shortName": "ภูมิใจไทย",
+            "color": "#2A9D8F",
+            "logo": "https://example.com/logos/party-004.png"
+        },
+        {
+            "id": "party-005",
+            "name": "พรรคพลังประชารัฐ",
+            "shortName": "พลังประชารัฐ",
+            "color": "#264653",
+            "logo": "https://example.com/logos/party-005.png"
+        }
+    ],
+    "candidates": [
+        {
+            "id": "candidate-001",
+            "name": "นายสมชาย ใจดี",
+            "partyId": "party-001",
+            "constituency": "กรุงเทพมหานคร เขต 1",
+            "number": 1
+        },
+        {
+            "id": "candidate-002",
+            "name": "นางสาวสมหญิง รักชาติ",
+            "partyId": "party-002",
+            "constituency": "กรุงเทพมหานคร เขต 1",
+            "number": 2
+        },
+        {
+            "id": "candidate-003",
+            "name": "นายประชา ประชาธิป",
+            "partyId": "party-003",
+            "constituency": "กรุงเทพมหานคร เขต 1",
+            "number": 3
+        },
+        {
+            "id": "candidate-004",
+            "name": "นายภูมิ ภูมิใจ",
+            "partyId": "party-004",
+            "constituency": "เชียงใหม่ เขต 1",
+            "number": 1
+        },
+        {
+            "id": "candidate-005",
+            "name": "นางสาวพลัง ชัยชนะ",
+            "partyId": "party-005",
+            "constituency": "เชียงใหม่ เขต 1",
+            "number": 2
+        }
+    ],
+    "constituencies": [
+        {
+            "id": "const-001",
+            "name": "กรุงเทพมหานคร เขต 1",
+            "province": "กรุงเทพมหานคร",
+            "district": "ปทุมวัน",
+            "totalVoters": 125000
+        },
+        {
+            "id": "const-002",
+            "name": "เชียงใหม่ เขต 1",
+            "province": "เชียงใหม่",
+            "district": "เมือง",
+            "totalVoters": 85000
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "atsi",
+        "name": "สมาคมผู้ประกอบการซอฟต์แวร์ไทย",
+        "type": "Organization",
+        "nodes": 45,
+        "uptime": "100%",
+        "color": "from-amber-400 to-orange-500",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=ATSI&backgroundColor=f59e0b"
+    },
+    {
+        "id": "thaipublica",
+        "name": "Thai Publica / สื่อมวลชน",
+        "type": "Media",
+        "nodes": 38,
+        "uptime": "99.98%",
+        "color": "from-blue-400 to-cyan-500",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=TP&backgroundColor=0ea5e9"
+    }
+]

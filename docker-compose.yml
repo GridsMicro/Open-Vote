@@ -1,0 +1,57 @@
+services:
+  # Local Blockchain (Hardhat Node)
+  hardhat:
+    image: node:18-alpine
+    working_dir: /usr/src/app
+    volumes:
+      - ./contracts:/usr/src/app
+    ports:
+      - "8545:8545"
+    command: sh -c "yarn install && npx hardhat node"
+
+  # Queue System for Aggregator
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  # Aggregator Service
+  aggregator:
+    build: ./aggregator
+    ports:
+      - "3001:3001"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - RPC_URL=http://hardhat:8545
+      - PORT=3001
+      - CONTRACT_ADDRESS=${CONTRACT_ADDRESS}
+      - PRIVATE_KEY=${PRIVATE_KEY}
+    depends_on:
+      - redis
+      - hardhat
+
+  # Independent Validator Node 1 (Community Monitoring)
+  validator-1:
+    build: ./validator
+    environment:
+      - RPC_URL=http://hardhat:8545
+      - AGGREGATOR_URL=http://aggregator:3001
+      - CONTRACT_ADDRESS=${CONTRACT_ADDRESS}
+    depends_on:
+      - hardhat
+      - aggregator
+
+  # Independent Validator Node 2 (University/NGO Monitoring)
+  validator-2:
+    build: ./validator
+    environment:
+      - RPC_URL=http://hardhat:8545
+      - AGGREGATOR_URL=http://aggregator:3001
+      - CONTRACT_ADDRESS=${CONTRACT_ADDRESS}
+    depends_on:
+      - hardhat
+      - aggregator
+
+networks:
+  default:
+    name: open-vote-network
